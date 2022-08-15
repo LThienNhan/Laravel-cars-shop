@@ -27,13 +27,10 @@ Route::get('/cart', [CartController::class, 'getCart'])->name('checkout.cart');
 Route::get('/cart/item/{id}/remove', [CartController::class, 'removeItem'])->name('checkout.cart.remove');
 Route::get('/cart/clear', [CartController::class, 'clearCart'])->name('checkout.cart.clear');
 
-
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/checkout', [CheckoutController::class, 'getCheckout'])->name('checkout.index');
     Route::post('/checkout/order', [CheckoutController::class, 'placeOrder'])->name('checkout.place.order');
-
     Route::get('checkout/payment/complete', [AccountController::class, 'complete'])->name('checkout.payment.complete');
-
     Route::get('account/orders', [AccountController::class, 'getOrders'])->name('account.orders');
 });
 

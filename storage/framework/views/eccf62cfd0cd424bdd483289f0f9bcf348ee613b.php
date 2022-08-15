@@ -15,10 +15,10 @@
                 <aside class="col-sm-3  col-md-3 white">
                     <h5 class="title">My Account</h5>
                     <ul class="list-unstyled">
-                        <li> <a href="#"> User Login </a></li>
-                        <li> <a href="#"> User register </a></li>
+                        <li> <a href="<?php echo e(route('login')); ?>"> User Login </a></li>
+                        <li> <a href="<?php echo e(route('register')); ?>"> User register </a></li>
                         <li> <a href="#"> Account Setting </a></li>
-                        <li> <a href="#"> My Orders </a></li>
+                        <li> <a href="<?php echo e(route('account.orders')); ?>"> My Orders </a></li>
                         <li> <a href="#"> My Wishlist </a></li>
                     </ul>
                 </aside>
@@ -36,13 +36,13 @@
                     <article class="white">
                         <h5 class="title">Contacts</h5>
                         <p>
-                            <strong>Phone: </strong> +123456789
+                            <strong>Phone: </strong>0389 0400 34
                             <br>
-                            <strong>Fax:</strong> +123456789
+                            <strong>Fax: </strong> +8438 9040 034
                         </p>
 
                         <div class="btn-group white">
-                            <a class="btn btn-facebook" title="Facebook" target="_blank" href="#"><i
+                            <a class="btn btn-facebook" title="Facebook" target="_blank" href="https://www.facebook.com/thien.nhan.27/"><i
                                     class="fab fa-facebook-f  fa-fw"></i></a>
                             <a class="btn btn-instagram" title="Instagram" target="_blank" href="#"><i
                                     class="fab fa-instagram  fa-fw"></i></a>
@@ -60,7 +60,7 @@
         <section class="footer-bottom row border-top-white">
             <div class="col-sm-6">
                 <p class="text-white-50"> Made with
-                    <3 <br> by Vosidiy M.</p>
+                 by <b><a href="https://www.facebook.com/thien.nhan.27/">Thiện Nhân</a></b></p>
             </div>
             <div class="col-sm-6">
                 <p class="text-md-right text-white-50">
