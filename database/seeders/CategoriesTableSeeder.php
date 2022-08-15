@@ -20,7 +20,45 @@ class CategoriesTableSeeder extends Seeder
             'parent_id'     =>  null,
             'menu'          =>  0,
         ]);
-
-        Category::factory()->count(10)->create();
+        Category::create([
+            'name'          =>  'Product',
+            'slug'          =>  'moto',
+            'description'   =>  'this is page moto',
+            'parent_id'     =>  '1',
+            'featured'     =>  0,
+            'menu'          =>  1,
+        ]);
+        Category::create([
+            'name'          =>  'Yamaha',
+            'slug'          =>  'yamaha',
+            'description'   =>  'this is page Yamaha',
+            'parent_id'     =>  '2',
+            'featured'     =>  0,
+            'menu'          =>  1,
+        ]);
+        Category::create([
+            'name'          =>  'Ninja',
+            'slug'          =>  'ninja',
+            'description'   =>  'this is page Ninja',
+            'parent_id'     =>  '2',
+            'featured'     =>  0,
+            'menu'          =>  1,
+        ]);
+        Category::create([
+            'name'          =>  'Ducati',
+            'slug'          =>  'ducati',
+            'description'   =>  'this is page Ducati',
+            'parent_id'     =>  '2',
+            'featured'     =>  0,
+            'menu'          =>  1,
+        ]);
+        Category::create([
+            'name'          =>  'Lamborghini',
+            'slug'          =>  'lamborghini',
+            'description'   =>  'this is page Lamborghini',
+            'parent_id'     =>  '2',
+            'featured'     =>  0,
+            'menu'          =>  1,
+        ]);
     }
 }
