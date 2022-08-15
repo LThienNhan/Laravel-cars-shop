@@ -23,7 +23,7 @@ class ProductSeeder extends Seeder
             'quantity'      => 202,
             'weight'        => 159,
             'price'         => 19000,
-            'sale_price'    => 0,
+            'sale_price'    => 17990,
             'status'        => 1,
             'featured'      => 1
         ]);
@@ -36,7 +36,6 @@ class ProductSeeder extends Seeder
             'quantity'      => 232,
             'weight'        => 189,
             'price'         => 24500,
-            'sale_price'    => 0,
             'status'        => 1,
             'featured'      => 1
         ]);
@@ -49,7 +48,7 @@ class ProductSeeder extends Seeder
             'quantity'      => 132,
             'weight'        => 209,
             'price'         => 44500,
-            'sale_price'    => 0,
+            'sale_price'    => 40870,
             'status'        => 1,
             'featured'      => 1
         ]);
@@ -62,7 +61,6 @@ class ProductSeeder extends Seeder
             'quantity'      => 191,
             'weight'        => 178,
             'price'         => 30500,
-            'sale_price'    => 0,
             'status'        => 1,
             'featured'      => 1
         ]);
@@ -75,7 +73,6 @@ class ProductSeeder extends Seeder
             'quantity'      => 164,
             'weight'        => 167,
             'price'         => 29000,
-            'sale_price'    => 0,
             'status'        => 1,
             'featured'      => 1
         ]);
@@ -87,8 +84,8 @@ class ProductSeeder extends Seeder
             'description'   =>  'Lamborghini Veneo 2018 is a great product from the manufacturer Lamborghini with the best construction and great looks',
             'quantity'      => 74,
             'weight'        => 1490,
-            'price'         => 950000,
-            'sale_price'    => 0,
+            'price'         => 980000,
+            'sale_price'    => 900000,
             'status'        => 1,
             'featured'      => 1
         ]);

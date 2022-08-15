@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Config;
+use Illuminate\Database\Eloquent\Model;
 
 class Setting extends Model
 {
@@ -30,7 +30,7 @@ class Setting extends Model
         return $entry->value;
     }
 
-        /**
+    /**
      * @param $key
      * @param null $value
      * @return bool
