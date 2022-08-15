@@ -76,7 +76,7 @@
         <figure class="itemside mb-3">
             <aside class="aside"><img src="{{ asset('frontend/images/icons/pay-visa.png') }}"></aside>
             <div class="text-wrap small text-muted">
-                Pay 84.78 AED ( Save 14.97 AED ) By using ADCB Cards
+                Pay 84.78 AED ( Save 14.97 AED ) By using ADCB Cards.
             </div>
         </figure>
         <figure class="itemside mb-3">

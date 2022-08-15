@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('title', $category->name); ?>
 <?php $__env->startSection('content'); ?>
 <section class="section-pagetop bg-dark">
@@ -16,7 +17,7 @@
             <?php if($product->images->count() > 0): ?>
                 <div class="img-wrap padding-y">
                 <a href="<?php echo e(route('product.show', $product->slug)); ?>">
-                    <img style="width:100%" src="<?php echo e(asset('frontend/images/'.$product->images->first()->full)); ?>" alt="<?php echo e($product->name); ?>">
+                    <img style="width:100%" src="<?php echo e(asset('frontend/images/product/'.$product->images->first()->full)); ?>" alt="<?php echo e($product->name); ?>">
                 </a></div>
             <?php else: ?>
                 <div class="img-wrap padding-y"><img src="https://via.placeholder.com/176" alt=""></div>

@@ -24,8 +24,8 @@
     @if ($product->images->count() > 0)
         <div class="img-big-wrap">
             <div class="padding-y">
-                <a href="{{  asset('frontend/images/'.$product->images->first()->full) }}" data-fancybox="">
-                    <img style="width:100%;height:100%" src="{{  asset('frontend/images/'.$product->images->first()->full) }}" alt="">
+                <a href="{{  asset('frontend/images/product/'.$product->images->first()->full) }}" data-fancybox="">
+                    <img style="width:100%;height:100%" src="{{  asset('frontend/images/product/'.$product->images->first()->full) }}" alt="">
                 </a>
             </div>
         </div>
@@ -40,7 +40,7 @@
         <div class="img-small-wrap">
             @foreach($product->images as $image)
                 <div class="item-gallery">
-                    <img src="{{  asset('frontend/images/'.$product->images->first()->full) }}" alt="">
+                    <img src="{{  asset('frontend/images/product/'.$product->images->first()->full) }}" alt="">
                 </div>
             @endforeach
         </div>

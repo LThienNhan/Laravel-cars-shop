@@ -50,7 +50,7 @@ text-align:center;
 <div style="text-align:left;margin-top:20px" class="col-md-6">
     <div data-aos="fade-right" data-aos-duration="1500">
 <h1 style="font-size:35px"><font style="color:black; font-weight: bold;">About</font> 
-<font style="color:gray; font-weight: bold;">CERES CAR</font></h1>
+<font style="color:gray; font-weight: bold;">CERESCAR</font></h1>
 </div>
 <div data-aos="fade-right" data-aos-duration="1500">
 <label style="font-size:17px;padding-left:50px">
@@ -84,7 +84,7 @@ CERES CART is must fail.
 
 <div class="col-md-12" style="margin-top:40px;margin-bottom:40px">
     <div data-aos="fade-up" data-aos-duration="1500">
-    <center><h1 style="color:white;font-size:40px;font-weight: bold;">WHY CHOOSE CERES CAR</h1></center>
+    <center><h1 style="color:white;font-size:40px;font-weight: bold;">WHY CHOOSE CERESCAR</h1></center>
     <hr style="width:30%;background-color:gray">  
     <center>
     </div>
@@ -116,14 +116,6 @@ CERES CART is must fail.
     </center>
        </div>
     </div>
-</div>
-
-
-<div  data-aos="fade-right" data-aos-duration="1500">
-<center><h1 style="color:gray;font-size:35px;font-weight: bold;margin-top:40px;">LATEST PRODUCT</h1>
-  <h5>Proud to bring the best products and experience to customers</h5>
-  <hr style="width:200px;background-color:#aaaa">
-</center>
 </div>
 <br><br>
 </div>
