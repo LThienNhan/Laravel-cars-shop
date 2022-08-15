@@ -50,7 +50,7 @@
                             </td>
                             <td>
                                 <div class="price-wrap">
-                                    <var class="price"><?php echo e(config('settings.currency_symbol'). $item->price); ?></var>
+                                    <var class="price"><?php echo e(config('settings.currency_symbol'). number_format($item->price)); ?></var>
                                     <small class="text-muted">each</small>
                                 </div>
                             </td>

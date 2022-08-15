@@ -10,13 +10,15 @@
 <div class="container">
 <div id="code_prod_complex">
 <div class="row">
-<img src="/resources/views/site/brand.png" alt="sadasd">
 
 @forelse($category->products as $product)
     <div class="col-md-4">
         <figure class="card card-product">
             @if ($product->images->count() > 0)
-                <div class="img-wrap padding-y"><img src="storage/brand.png" alt="{{ $product->name }}"></div>
+                <div class="img-wrap padding-y">
+                <a href="{{ route('product.show', $product->slug) }}">
+                    <img style="width:100%" src="{{  asset('frontend/images/'.$product->images->first()->full) }}" alt="{{ $product->name }}">
+                </a></div>
             @else
                 <div class="img-wrap padding-y"><img src="https://via.placeholder.com/176" alt=""></div>
         @endif

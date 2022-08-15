@@ -9,13 +9,15 @@
 <div class="container">
 <div id="code_prod_complex">
 <div class="row">
-<img src="/resources/views/site/brand.png" alt="sadasd">
 
 <?php $__empty_1 = true; $__currentLoopData = $category->products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
     <div class="col-md-4">
         <figure class="card card-product">
             <?php if($product->images->count() > 0): ?>
-                <div class="img-wrap padding-y"><img src="storage/brand.png" alt="<?php echo e($product->name); ?>"></div>
+                <div class="img-wrap padding-y">
+                <a href="<?php echo e(route('product.show', $product->slug)); ?>">
+                    <img style="width:100%" src="<?php echo e(asset('frontend/images/'.$product->images->first()->full)); ?>" alt="<?php echo e($product->name); ?>">
+                </a></div>
             <?php else: ?>
                 <div class="img-wrap padding-y"><img src="https://via.placeholder.com/176" alt=""></div>
         <?php endif; ?>

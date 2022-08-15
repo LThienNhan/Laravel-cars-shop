@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Site\CategoryController;
 use App\Http\Controllers\Site\ProductController;
 use App\Http\Controllers\Site\CartController;
+use App\Http\Controllers\Site\AccountController;
+use App\Http\Controllers\Site\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,11 +29,12 @@ Route::get('/cart/clear', [CartController::class, 'clearCart'])->name('checkout.
 
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/checkout', 'Site\CheckoutController@getCheckout')->name('checkout.index');
-    Route::post('/checkout/order', 'Site\CheckoutController@placeOrder')->name('checkout.place.order');
+    Route::get('/checkout', [CheckoutController::class, 'getCheckout'])->name('checkout.index');
+    Route::post('/checkout/order', [CheckoutController::class, 'placeOrder'])->name('checkout.place.order');
 
-    Route::get('checkout/payment/complete', 'Site\CheckoutController@complete')->name('checkout.payment.complete');
+    Route::get('checkout/payment/complete', [AccountController::class, 'complete'])->name('checkout.payment.complete');
 
-    Route::get('account/orders', 'Site\AccountController@getOrders')->name('account.orders');
+    Route::get('account/orders', [AccountController::class, 'getOrders'])->name('account.orders');
 });
+
 require 'admin.php';

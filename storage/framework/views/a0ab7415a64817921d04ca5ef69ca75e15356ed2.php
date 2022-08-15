@@ -23,8 +23,8 @@
     <?php if($product->images->count() > 0): ?>
         <div class="img-big-wrap">
             <div class="padding-y">
-                <a href="<?php echo e(asset('storage/'.$product->images->first()->full)); ?>" data-fancybox="">
-                    <img src="<?php echo e(asset('storage/'.$product->images->first()->full)); ?>" alt="">
+                <a href="<?php echo e(asset('frontend/images/'.$product->images->first()->full)); ?>" data-fancybox="">
+                    <img style="width:100%;height:100%" src="<?php echo e(asset('frontend/images/'.$product->images->first()->full)); ?>" alt="">
                 </a>
             </div>
         </div>
@@ -39,7 +39,7 @@
         <div class="img-small-wrap">
             <?php $__currentLoopData = $product->images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="item-gallery">
-                    <img src="<?php echo e(asset('storage/'.$image->full)); ?>" alt="">
+                    <img src="<?php echo e(asset('frontend/images/'.$product->images->first()->full)); ?>" alt="">
                 </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>

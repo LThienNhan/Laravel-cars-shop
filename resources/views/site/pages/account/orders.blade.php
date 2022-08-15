@@ -29,7 +29,7 @@
                                     <th scope="row">{{ $order->order_number }}</th>
                                     <td>{{ $order->first_name }}</td>
                                     <td>{{ $order->last_name }}</td>
-                                    <td>{{ config('settings.currency_symbol') }}{{ round($order->grand_total, 2) }}</td>
+                                    <td>{{ config('settings.currency_symbol') }}{{ number_format(round($order->grand_total, 2)) }}</td>
                                     <td>{{ $order->item_count }}</td>
                                     <td><span class="badge badge-success">{{ strtoupper($order->status) }}</span></td>
                                 </tr>
