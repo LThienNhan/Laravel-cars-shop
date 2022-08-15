@@ -18,4 +18,5 @@ Auth::routes();
 Route::view('/', 'site.pages.homepage');
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category.show');
 Route::get('/product/{slug}',  [ProductController::class, 'show'])->name('product.show');
+Route::post('/product/add/cart', 'Site\ProductController@addToCart')->name('product.add.cart');
 require 'admin.php';
