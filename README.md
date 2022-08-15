@@ -15,11 +15,8 @@
 <h5>This is how it works.</h5>
 <ul>
 <li>1. Download the Source code to compress the file into xampp's htdocs folder.</li>
-<<<<<<< HEAD
 <li>2. After zipping, go to the following link:<b>http://localhost/phpmyadmin/index.php</b> Create a new database named <b>laravel-cars-shop</b>.</li >
-=======
 <li>2. After zipping, go to the following link: <b>http://localhost/phpmyadmin/index.php</b> Create a new database named <b>laravel-cars-shop</b>.</li >
->>>>>>> 76791da5df7ed923b3251e36b72226a784b46ab9
 <li>3. After creating the database, open the cmd of the Source code file and run the following command: <b>php artisan migrate:refresh --seed</b> 
 This command will automatically create the fields in your database and create the default information for the website</li>
 <li>4. Next, use the <b>php artisan serve</b> command to create a virtual link for the website.</li>
