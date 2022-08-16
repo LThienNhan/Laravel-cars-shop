@@ -1,15 +1,14 @@
-@extends('admin.app')
-@section('title') {{ $pageTitle }} @endsection
-@section('styles')
-    <link rel="stylesheet" type="text/css" href="{{ asset('backend/js/plugins/dropzone/dist/min/dropzone.min.css') }}"/>
-@endsection
-@section('content')
+<?php $__env->startSection('title'); ?> <?php echo e($pageTitle); ?> <?php $__env->stopSection(); ?>
+<?php $__env->startSection('styles'); ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('backend/js/plugins/dropzone/dist/min/dropzone.min.css')); ?>"/>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-shopping-bag"></i> {{ $pageTitle }} - {{ $subTitle }}</h1>
+            <h1><i class="fa fa-shopping-bag"></i> <?php echo e($pageTitle); ?> - <?php echo e($subTitle); ?></h1>
         </div>
     </div>
-    @include('admin.partials.flash')
+    <?php echo $__env->make('admin.partials.flash', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <div class="row user">
         <div class="col-md-3">
             <div class="tile p-0">
@@ -24,24 +23,38 @@
             <div class="tab-content">
                 <div class="tab-pane active" id="general">
                     <div class="tile">
-                        <form action="{{ route('admin.products.update') }}" method="POST" role="form">
-                            @csrf
+                        <form action="<?php echo e(route('admin.products.update')); ?>" method="POST" role="form">
+                            <?php echo csrf_field(); ?>
                             <h3 class="tile-title">Product Information</h3>
                             <hr>
                             <div class="tile-body">
                                 <div class="form-group">
                                     <label class="control-label" for="name">Name</label>
                                     <input
-                                        class="form-control @error('name') is-invalid @enderror"
+                                        class="form-control <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
                                         type="text"
                                         placeholder="Enter attribute name"
                                         id="name"
                                         name="name"
-                                        value="{{ old('name', $product->name) }}"
+                                        value="<?php echo e(old('name', $product->name)); ?>"
                                     />
-                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <input type="hidden" name="product_id" value="<?php echo e($product->id); ?>">
                                     <div class="invalid-feedback active">
-                                        <i class="fa fa-exclamation-circle fa-fw"></i> @error('name') <span>{{ $message }}</span> @enderror
+                                        <i class="fa fa-exclamation-circle fa-fw"></i> <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <span><?php echo e($message); ?></span> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -49,33 +62,61 @@
                                         <div class="form-group">
                                             <label class="control-label" for="sku">SKU</label>
                                             <input
-                                                class="form-control @error('sku') is-invalid @enderror"
+                                                class="form-control <?php $__errorArgs = ['sku'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
                                                 type="text"
                                                 placeholder="Enter product sku"
                                                 id="sku"
                                                 name="sku"
-                                                value="{{ old('sku', $product->sku) }}"
+                                                value="<?php echo e(old('sku', $product->sku)); ?>"
                                             />
                                             <div class="invalid-feedback active">
-                                                <i class="fa fa-exclamation-circle fa-fw"></i> @error('sku') <span>{{ $message }}</span> @enderror
+                                                <i class="fa fa-exclamation-circle fa-fw"></i> <?php $__errorArgs = ['sku'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <span><?php echo e($message); ?></span> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label" for="brand_id">Brand</label>
-                                            <select name="brand_id" id="brand_id" class="form-control @error('brand_id') is-invalid @enderror">
+                                            <select name="brand_id" id="brand_id" class="form-control <?php $__errorArgs = ['brand_id'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>">
                                                 <option value="0">Select a brand</option>
-                                                @foreach($brands as $brand)
-                                                    @if ($product->brand_id == $brand->id)
-                                                        <option value="{{ $brand->id }}" selected>{{ $brand->name }}</option>
-                                                    @else
-                                                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
-                                                    @endif
-                                                @endforeach
+                                                <?php $__currentLoopData = $brands; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brand): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php if($product->brand_id == $brand->id): ?>
+                                                        <option value="<?php echo e($brand->id); ?>" selected><?php echo e($brand->name); ?></option>
+                                                    <?php else: ?>
+                                                        <option value="<?php echo e($brand->id); ?>"><?php echo e($brand->name); ?></option>
+                                                    <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                             <div class="invalid-feedback active">
-                                                <i class="fa fa-exclamation-circle fa-fw"></i> @error('brand_id') <span>{{ $message }}</span> @enderror
+                                                <i class="fa fa-exclamation-circle fa-fw"></i> <?php $__errorArgs = ['brand_id'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <span><?php echo e($message); ?></span> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -85,10 +126,10 @@
                                         <div class="form-group">
                                             <label class="control-label" for="categories">Categories</label>
                                             <select name="categories[]" id="categories" class="form-control" multiple>
-                                                @foreach($categories as $category)
-                                                    @php $check = in_array($category->id, $product->categories->pluck('id')->toArray()) ? 'selected' : ''@endphp
-                                                    <option value="{{ $category->id }}" {{ $check }}>{{ $category->name }}</option>
-                                                @endforeach
+                                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php $check = in_array($category->id, $product->categories->pluck('id')->toArray()) ? 'selected' : ''?>
+                                                    <option value="<?php echo e($category->id); ?>" <?php echo e($check); ?>><?php echo e($category->name); ?></option>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                         </div>
                                     </div>
@@ -98,15 +139,29 @@
                                         <div class="form-group">
                                             <label class="control-label" for="price">Price</label>
                                             <input
-                                                class="form-control @error('price') is-invalid @enderror"
+                                                class="form-control <?php $__errorArgs = ['price'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
                                                 type="text"
                                                 placeholder="Enter product price"
                                                 id="price"
                                                 name="price"
-                                                value="{{ old('price', $product->price) }}"
+                                                value="<?php echo e(old('price', $product->price)); ?>"
                                             />
                                             <div class="invalid-feedback active">
-                                                <i class="fa fa-exclamation-circle fa-fw"></i> @error('price') <span>{{ $message }}</span> @enderror
+                                                <i class="fa fa-exclamation-circle fa-fw"></i> <?php $__errorArgs = ['price'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <span><?php echo e($message); ?></span> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -119,7 +174,7 @@
                                                 placeholder="Enter product special price"
                                                 id="sale_price"
                                                 name="sale_price"
-                                                value="{{ old('sale_price', $product->sale_price) }}"
+                                                value="<?php echo e(old('sale_price', $product->sale_price)); ?>"
                                             />
                                         </div>
                                     </div>
@@ -129,15 +184,29 @@
                                         <div class="form-group">
                                             <label class="control-label" for="quantity">Quantity</label>
                                             <input
-                                                class="form-control @error('quantity') is-invalid @enderror"
+                                                class="form-control <?php $__errorArgs = ['quantity'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
                                                 type="number"
                                                 placeholder="Enter product quantity"
                                                 id="quantity"
                                                 name="quantity"
-                                                value="{{ old('quantity', $product->quantity) }}"
+                                                value="<?php echo e(old('quantity', $product->quantity)); ?>"
                                             />
                                             <div class="invalid-feedback active">
-                                                <i class="fa fa-exclamation-circle fa-fw"></i> @error('quantity') <span>{{ $message }}</span> @enderror
+                                                <i class="fa fa-exclamation-circle fa-fw"></i> <?php $__errorArgs = ['quantity'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <span><?php echo e($message); ?></span> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -150,14 +219,14 @@
                                                 placeholder="Enter product weight"
                                                 id="weight"
                                                 name="weight"
-                                                value="{{ old('weight', $product->weight) }}"
+                                                value="<?php echo e(old('weight', $product->weight)); ?>"
                                             />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label" for="description">Description</label>
-                                    <textarea name="description" id="description" rows="8" class="form-control">{{ old('description', $product->description) }}</textarea>
+                                    <textarea name="description" id="description" rows="8" class="form-control"><?php echo e(old('description', $product->description)); ?></textarea>
                                 </div>
                                 <div class="form-group">
                                     <div class="form-check">
@@ -166,7 +235,8 @@
                                                    type="checkbox"
                                                    id="status"
                                                    name="status"
-                                                   {{ $product->status == 1 ? 'checked' : '' }}
+                                                   <?php echo e($product->status == 1 ? 'checked' : ''); ?>
+
                                                 />Status
                                         </label>
                                     </div>
@@ -178,7 +248,8 @@
                                                    type="checkbox"
                                                    id="featured"
                                                    name="featured"
-                                                   {{ $product->featured == 1 ? 'checked' : '' }}
+                                                   <?php echo e($product->featured == 1 ? 'checked' : ''); ?>
+
                                                 />Featured
                                         </label>
                                     </div>
@@ -188,7 +259,7 @@
                                 <div class="row d-print-none mt-2">
                                     <div class="col-12 text-right">
                                         <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Update Product</button>
-                                        <a class="btn btn-danger" href="{{ route('admin.products.index') }}"><i class="fa fa-fw fa-lg fa-arrow-left"></i>Go Back</a>
+                                        <a class="btn btn-danger" href="<?php echo e(route('admin.products.index')); ?>"><i class="fa fa-fw fa-lg fa-arrow-left"></i>Go Back</a>
                                     </div>
                                 </div>
                             </div>
@@ -203,8 +274,9 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <form action="" class="dropzone" id="dropzone" style="border: 2px dashed rgba(0,0,0,0.3)">
-                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                        {{ csrf_field() }}
+                                        <input type="hidden" name="product_id" value="<?php echo e($product->id); ?>">
+                                        <?php echo e(csrf_field()); ?>
+
                                     </form>
                                 </div>
                             </div>
@@ -215,38 +287,38 @@
                                     </button>
                                 </div>
                             </div>
-                            @if ($product->images)
+                            <?php if($product->images): ?>
                                 <hr>
                                 <div class="row">
-                                    @foreach($product->images as $image)
+                                    <?php $__currentLoopData = $product->images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="col-md-3">
                                             <div class="card">
                                                 <div class="card-body">
-                                                    <img src="{{asset('images/'.$image->full) }}" id="brandLogo" class="img-fluid" alt="{{asset('images/'.$image->full) }}">
-                                                    <a class="card-link float-right text-danger" href="{{ route('admin.products.images.delete', $image->id) }}">
+                                                    <img src="<?php echo e(asset('images/'.$image->full)); ?>" id="brandLogo" class="img-fluid" alt="<?php echo e(asset('images/'.$image->full)); ?>">
+                                                    <a class="card-link float-right text-danger" href="<?php echo e(route('admin.products.images.delete', $image->id)); ?>">
                                                         <i class="fa fa-fw fa-lg fa-trash"></i>
                                                     </a>
                                                 </div>
                                             </div>
                                         </div>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
-                            @endif
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane" id="attributes">
-                    <product-attributes :productid="{{ $product->id }}"></product-attributes>
+                    <product-attributes :productid="<?php echo e($product->id); ?>"></product-attributes>
                 </div>
             </div>
         </div>
     </div>
-@endsection
-@push('scripts')
-    <script type="text/javascript" src="{{ asset('backend/js/plugins/select2.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('backend/js/plugins/dropzone/dist/min/dropzone.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('backend/js/plugins/bootstrap-notify.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('backend/js/app.js') }}"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('scripts'); ?>
+    <script type="text/javascript" src="<?php echo e(asset('backend/js/plugins/select2.min.js')); ?>"></script>
+    <script type="text/javascript" src="<?php echo e(asset('backend/js/plugins/dropzone/dist/min/dropzone.min.js')); ?>"></script>
+    <script type="text/javascript" src="<?php echo e(asset('backend/js/plugins/bootstrap-notify.min.js')); ?>"></script>
+    <script type="text/javascript" src="<?php echo e(asset('backend/js/app.js')); ?>"></script>
     <script>
         Dropzone.autoDiscover = false;
 
@@ -259,7 +331,7 @@
                 maxFilesize: 4,
                 parallelUploads: 2,
                 uploadMultiple: false,
-                url: "{{ route('admin.products.images.upload') }}",
+                url: "<?php echo e(route('admin.products.images.upload')); ?>",
                 autoProcessQueue: false,
             });
             myDropzone.on("queuecomplete", function (file) {
@@ -290,4 +362,6 @@
             }
         });
     </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('admin.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\Xampp\htdocs\Laravel-cars-shop\resources\views/admin/products/edit.blade.php ENDPATH**/ ?>

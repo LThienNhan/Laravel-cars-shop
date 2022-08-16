@@ -17,7 +17,7 @@
             @if ($product->images->count() > 0)
                 <div class="img-wrap padding-y">
                 <a href="{{ route('product.show', $product->slug) }}">
-                    <img style="width:100%" src="{{  asset('frontend/images/product/'.$product->images->first()->full) }}" alt="{{ $product->name }}">
+                    <img style="width:100%" src="{{  asset('images/'.$product->images->first()->full) }}" alt="{{ $product->name }}">
                 </a></div>
             @else
                 <div class="img-wrap padding-y"><img src="https://via.placeholder.com/176" alt=""></div>

@@ -22,13 +22,15 @@ trait UploadAble
     public function uploadOne(UploadedFile $file, $folder = null, $disk = 'public', $filename = null)
     {
         $name = !is_null($filename) ? $filename : Str::random(25);
-
+       
         return $file->storeAs(
             $folder,
             $name . "." . $file->getClientOriginalExtension(),
-            $disk
-        );
+            $disk,
+
+        );  
     }
+
 
     /**
      * @param null $path
