@@ -38,5 +38,33 @@ class ProductImagesSeeder extends Seeder
             'product_id'    =>  '6',
             'full'          =>  'products/1641958850_dau-xe-lamborghini-veneno.jpg',
         ]);
+        ProductImage::create([
+            'product_id'    =>  '7',
+            'full'          =>  'products/BMW-S1000RR-M-20-02.jpg',
+        ]);
+        ProductImage::create([
+            'product_id'    =>  '8',
+            'full'          =>  'products/cbr600rr 2020.jfif',
+        ]);
+        ProductImage::create([
+            'product_id'    =>  '9',
+            'full'          =>  'products/cbr1000rr 2020.jpg',
+        ]);
+        ProductImage::create([
+            'product_id'    =>  '10',
+            'full'          =>  'products/GSX 1000RR.jpg',
+        ]);
+        ProductImage::create([
+            'product_id'    =>  '11',
+            'full'          =>  'products/Hongqi s9 phev.jpg',
+        ]);
+        ProductImage::create([
+            'product_id'    =>  '12',
+            'full'          =>  'products/hongqi-s9-lead-image.jpg',
+        ]);
+        ProductImage::create([
+            'product_id'    =>  '13',
+            'full'          =>  'products/mclaren-720s-gia.jpg',
+        ]);
     }
 }

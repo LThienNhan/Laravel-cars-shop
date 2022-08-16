@@ -37,7 +37,7 @@
                                             <span class="badge badge-info"><?php echo e($category->name); ?></span>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </td>
-                                    <td><?php echo e(config('settings.currency_symbol')); ?><?php echo e($product->price); ?></td>
+                                    <td><?php echo e(config('settings.currency_symbol')); ?><?php echo e(number_format($product->price)); ?></td>
                                     <td class="text-center">
                                         <?php if($product->status == 1): ?>
                                             <span class="badge badge-success">Active</span>
@@ -48,7 +48,7 @@
                                     <td class="text-center">
                                         <div class="btn-group" role="group" aria-label="Second group">
                                             <a href="<?php echo e(route('admin.products.edit', $product->id)); ?>" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                                            <a href="<?php echo e(route('admin.products.edit', $product->id)); ?>" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                            <a href="<?php echo e(route('admin.products.delete', $product->id)); ?>" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>

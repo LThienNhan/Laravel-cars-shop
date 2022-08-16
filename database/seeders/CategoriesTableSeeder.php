@@ -21,7 +21,7 @@ class CategoriesTableSeeder extends Seeder
             'menu'          =>  0,
         ]);
         Category::create([
-            'name'          =>  'Product',
+            'name'          =>  'Product Moto',
             'slug'          =>  'moto',
             'description'   =>  'this is page moto',
             'parent_id'     =>  '1',
@@ -56,7 +56,47 @@ class CategoriesTableSeeder extends Seeder
             'name'          =>  'Lamborghini',
             'slug'          =>  'lamborghini',
             'description'   =>  'this is page Lamborghini',
+            'parent_id'     =>  '1',
+            'featured'     =>  0,
+            'menu'          =>  1,
+        ]);
+        Category::create([
+            'name'          =>  'BMW',
+            'slug'          =>  'bmw',
+            'description'   =>  'this is page BMW',
             'parent_id'     =>  '2',
+            'featured'     =>  0,
+            'menu'          =>  1,
+        ]);
+        Category::create([
+            'name'          =>  'Honda',
+            'slug'          =>  'honda',
+            'description'   =>  'this is page Honda',
+            'parent_id'     =>  '2',
+            'featured'     =>  0,
+            'menu'          =>  1,
+        ]);
+        Category::create([
+            'name'          =>  'Suzuki',
+            'slug'          =>  'suzuki',
+            'description'   =>  'this is page Suzuki',
+            'parent_id'     =>  '2',
+            'featured'     =>  0,
+            'menu'          =>  1,
+        ]);
+        Category::create([
+            'name'          =>  'Hongqi',
+            'slug'          =>  'hongqi',
+            'description'   =>  'this is page Hongqi',
+            'parent_id'     =>  '1',
+            'featured'     =>  0,
+            'menu'          =>  1,
+        ]);
+        Category::create([
+            'name'          =>  'Mclaren',
+            'slug'          =>  'mclaren',
+            'description'   =>  'this is page Mclaren',
+            'parent_id'     =>  '1',
             'featured'     =>  0,
             'menu'          =>  1,
         ]);
