@@ -25,6 +25,7 @@ Route::post('/product/add/cart', [ProductController::class, 'addToCart'])->name(
 
 Route::get('/cart', [CartController::class, 'getCart'])->name('checkout.cart');
 Route::get('/cart/item/{id}/remove', [CartController::class, 'removeItem'])->name('checkout.cart.remove');
+Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('checkout.cart.update');
 Route::get('/cart/clear', [CartController::class, 'clearCart'])->name('checkout.cart.clear');
 
 Route::group(['middleware' => ['auth']], function () {

@@ -12,11 +12,23 @@ class CartController extends Controller
     {
         return view('site.pages.cart');
     }
+
+    public function update(Request $request, $id)
+    {   
+        foreach(Cart::getContent() as $item)
+        {
+            if($item -> id == $id)
+            {
+                Cart::update($item -> id, [$item-> quantity = $request->input('qty')]);
+            }
+        }
+        return redirect()->back()->with('message', 'Item update successfully.');
+    }
     
     public function removeItem($id)
     {
+        echo $id;
         Cart::remove($id);
-
         if (Cart::isEmpty()) {
             return redirect('/');
         }
@@ -26,7 +38,6 @@ class CartController extends Controller
     public function clearCart()
     {
         Cart::clear();
-
         return redirect('/');
     }
 }

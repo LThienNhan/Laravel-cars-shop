@@ -46,9 +46,12 @@
                                     </figcaption>
                                 </figure>
                             </td>
+                            <form action="{{ route('checkout.cart.update', $item->id) }}" method="POST" role="form" id="update">
+                            {{ csrf_field() }}
                             <td>
-                                <var class="price">{{ $item->quantity }}</var>
+                                <input name="qty" type="number" value="{{ $item->quantity }}" class="form-control quantity" />
                             </td>
+                        
                             <td>
                                 <div class="price-wrap">
                                     <var class="price">{{ config('settings.currency_symbol'). number_format($item->price) }}</var>
@@ -57,8 +60,11 @@
                             </td>
                             <td class="text-right">
                                 <a href="{{ route('checkout.cart.remove', $item->id) }}" class="btn btn-outline-danger"><i class="fa fa-times"></i> </a>
+                                <button type="submit" class="btn btn-outline-danger">Update</button>
                             </td>
+                            </form>
                         </tr>
+                            
                     @endforeach
                     </tbody>
                 </table>
@@ -70,7 +76,7 @@
         <p class="alert alert-success">Add USD 5.00 of eligible items to your order to qualify for FREE Shipping. </p>
         <dl class="dlist-align h4">
             <dt>Total:</dt>
-            <dd class="text-right"><strong>{{ config('settings.currency_symbol') }}{{ \Cart::getSubTotal() }}</strong></dd>
+            <dd class="text-right"><strong>{{ config('settings.currency_symbol') }}{{ number_format(\Cart::getSubTotal()) }}</strong></dd>
         </dl>
         <hr>
         <figure class="itemside mb-3">

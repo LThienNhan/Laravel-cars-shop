@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('title', 'Shopping Cart'); ?>
 <?php $__env->startSection('content'); ?>
 <section class="section-pagetop bg-dark">
@@ -45,9 +46,13 @@
                                     </figcaption>
                                 </figure>
                             </td>
+                            <form action="<?php echo e(route('checkout.cart.update', $item->id)); ?>" method="POST" role="form" id="update">
+                            <?php echo e(csrf_field()); ?>
+
                             <td>
-                                <var class="price"><?php echo e($item->quantity); ?></var>
+                                <input name="qty" type="number" value="<?php echo e($item->quantity); ?>" class="form-control quantity" />
                             </td>
+                        
                             <td>
                                 <div class="price-wrap">
                                     <var class="price"><?php echo e(config('settings.currency_symbol'). number_format($item->price)); ?></var>
@@ -56,8 +61,11 @@
                             </td>
                             <td class="text-right">
                                 <a href="<?php echo e(route('checkout.cart.remove', $item->id)); ?>" class="btn btn-outline-danger"><i class="fa fa-times"></i> </a>
+                                <button type="submit" class="btn btn-outline-danger">Update</button>
                             </td>
+                            </form>
                         </tr>
+                            
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 </table>
@@ -69,13 +77,13 @@
         <p class="alert alert-success">Add USD 5.00 of eligible items to your order to qualify for FREE Shipping. </p>
         <dl class="dlist-align h4">
             <dt>Total:</dt>
-            <dd class="text-right"><strong><?php echo e(config('settings.currency_symbol')); ?><?php echo e(\Cart::getSubTotal()); ?></strong></dd>
+            <dd class="text-right"><strong><?php echo e(config('settings.currency_symbol')); ?><?php echo e(number_format(\Cart::getSubTotal())); ?></strong></dd>
         </dl>
         <hr>
         <figure class="itemside mb-3">
             <aside class="aside"><img src="<?php echo e(asset('frontend/images/icons/pay-visa.png')); ?>"></aside>
             <div class="text-wrap small text-muted">
-                Pay 84.78 AED ( Save 14.97 AED ) By using ADCB Cards
+                Pay 84.78 AED ( Save 14.97 AED ) By using ADCB Cards.
             </div>
         </figure>
         <figure class="itemside mb-3">
