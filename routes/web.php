@@ -6,6 +6,7 @@ use App\Http\Controllers\Site\ProductController;
 use App\Http\Controllers\Site\CartController;
 use App\Http\Controllers\Site\AccountController;
 use App\Http\Controllers\Site\CheckoutController;
+use App\Http\Controllers\Site\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,5 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('checkout/payment/complete', [AccountController::class, 'complete'])->name('checkout.payment.complete');
     Route::get('account/orders', [AccountController::class, 'getOrders'])->name('account.orders');
 });
+
+Route::get('/search', [SearchController::class, 'search'])->name('product.search');
 
 require 'admin.php';
