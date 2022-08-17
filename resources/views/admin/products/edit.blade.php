@@ -119,7 +119,7 @@
                         placeholder="Enter product special price"
                         id="sale_price"
                         name="sale_price"
-                        value="{{ old('sale_price', $product->sale_price) }}"
+                        value="{{ old('sale_price', number_format($product->sale_price)) }}"
                     />
                       <div class="invalid-feedback active">
                         <i class="fa fa-exclamation-circle fa-fw"></i> @error('sale_price') <span>{{ $message }}</span> @enderror
@@ -137,7 +137,7 @@
                         placeholder="Enter product quantity"
                         id="quantity"
                         name="quantity"
-                        value="{{ old('quantity', $product->quantity) }}"
+                        value="{{ old('quantity', number_format($product->quantity)) }}"
                     />
                     <div class="invalid-feedback active">
                         <i class="fa fa-exclamation-circle fa-fw"></i> @error('quantity') <span>{{ $message }}</span> @enderror
