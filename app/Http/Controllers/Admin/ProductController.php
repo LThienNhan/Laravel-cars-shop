@@ -85,6 +85,6 @@ class ProductController extends BaseController
         if (!$product) {
             return $this->responseRedirectBack('Error occurred while deleting product.', 'error', true, true);
         }
-        return $this->responseRedirect('admin.product.index', 'Product deleted successfully' ,'success',false, false);
+        return $this->responseRedirect('admin.products.index', 'Product deleted successfully' ,'success',false, false);
     }
 }

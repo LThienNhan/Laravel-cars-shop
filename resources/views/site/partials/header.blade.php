@@ -13,7 +13,7 @@
                 <div class="col-lg-6 col-sm-6">
                     <form action="{{route('product.search')}}" class="search-wrap">
                         <div class="input-group">
-                            <input type="text" class="form-control" name="search" placeholder="Search by price or product name...">
+                            <input type="text" class="form-control" name="search" placeholder="Search by price or product name..." required>
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">
                                     <i class="fa fa-search"></i>

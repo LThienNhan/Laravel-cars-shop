@@ -36,7 +36,7 @@ class SearchRepository extends BaseRepository implements SearchContract
     {
         $search = $params['search'];
         $searchs = Product::where('name', 'like', '%'.$search.'%')
-            ->orWhere('price','<=',$search)->paginate(100);
+            ->orWhere('price','>=',$search)->paginate(100);
         return $searchs;
     }
 

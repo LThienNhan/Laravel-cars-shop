@@ -79,7 +79,7 @@
                             <dt>{{ $attribute->name }}: </dt>
                             <dd>
                                 <select class="form-control form-control-sm option" style="width:180px;" name="{{ strtolower($attribute->name ) }}">
-                                    <option data-price="0" value="0"> Select a {{ $attribute->name }}</option>
+                                    <option data-price="0" value="1"> Select a {{ $attribute->name }}</option>
                                     @foreach($product->attributes as $attributeValue)
                                         @if ($attributeValue->attribute_id == $attribute->id)
                                             <option

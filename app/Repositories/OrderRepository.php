@@ -18,12 +18,18 @@ class OrderRepository extends BaseRepository implements OrderContract
 
     public function storeOrderDetails($params)
     {
+        $items = Cart::getContent();
+        $quantity = 0;
+        foreach ($items as $item)
+        {
+           $quantity += $item->quantity;
+        }
         $order = Order::create([
             'order_number'      =>  'ORD-'.strtoupper(uniqid()),
             'user_id'           => auth()->user()->id,
             'status'            =>  'pending',
             'grand_total'       =>  Cart::getSubTotal(),
-            'item_count'        =>  Cart::getTotalQuantity(),
+            'item_count'        =>  $quantity,
             'payment_status'    =>  0,
             'payment_method'    =>  null,
             'first_name'        =>  $params['first_name'],

@@ -80,7 +80,7 @@
                                     <article class="card-body">
                                         <dl class="dlist-align">
                                             <dt>Total cost: </dt>
-                                            <dd class="text-right h5 b"> {{ config('settings.currency_symbol') }}{{ \Cart::getSubTotal() }} </dd>
+                                            <dd class="text-right h5 b"> {{ config('settings.currency_symbol') }}{{ number_format(\Cart::getSubTotal()) }} </dd>
                                         </dl>
                                     </article>
                                 </div>
