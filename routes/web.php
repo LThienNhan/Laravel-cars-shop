@@ -22,12 +22,23 @@ Auth::routes();
 Route::view('/', 'site.pages.homepage');
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category.show');
 Route::get('/product/{slug}',  [ProductController::class, 'show'])->name('product.show');
-Route::post('/product/add/cart', [ProductController::class, 'addToCart'])->name('product.add.cart');
+
+Route::get('/seesion/{id}', [CartController::class, 'seesion'])->name('cart.seesion');
+Route::get('/database/{id}', [CartController::class, 'database'])->name('cart.database');
+
+Route::post('/product/add/cart', [CartController::class, 'addToCartSession'])->name('product.add.cart');
+Route::post('/product/add/cartDB', [CartController::class, 'addToCartDB'])->name('product.add.cartDB');
 
 Route::get('/cart', [CartController::class, 'getCart'])->name('checkout.cart');
+
 Route::get('/cart/item/{id}/remove', [CartController::class, 'removeItem'])->name('checkout.cart.remove');
+Route::get('/cart/item/{id}/removeDB', [CartController::class, 'removeItemDB'])->name('checkout.cart.removeDB');
+
 Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('checkout.cart.update');
+Route::post('/cart/updateDB/{id}', [CartController::class, 'updateDB'])->name('checkout.cart.updateDB');
+
 Route::get('/cart/clear', [CartController::class, 'clearCart'])->name('checkout.cart.clear');
+Route::get('/cart/cleardb', [CartController::class, 'clearCartDB'])->name('checkout.cart.clearDB');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/checkout', [CheckoutController::class, 'getCheckout'])->name('checkout.index');

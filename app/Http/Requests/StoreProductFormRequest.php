@@ -32,4 +32,10 @@ class StoreProductFormRequest extends FormRequest
             'quantity'  =>  'required|numeric',
         ];
     }
+
+    // public function messages(){
+    //     return [
+    //             'name.required' => 'sai ten',
+    //     ];
+    // }
 }

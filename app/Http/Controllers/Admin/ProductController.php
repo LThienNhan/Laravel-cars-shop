@@ -9,6 +9,7 @@ use App\Contracts\ProductContract;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\StoreProductFormRequest;
 
+
 class ProductController extends BaseController
 {
     protected $brandRepository;
@@ -59,6 +60,8 @@ class ProductController extends BaseController
 
     public function edit($id)
     {
+        //có thể sử dụng Product trên funtison liên kết với $id và sử dụng nó
+        //$product = $id; thay vì $product = $this->productRepository->findProductById($id);
         $product = $this->productRepository->findProductById($id);
         $brands = $this->brandRepository->listBrands('name', 'asc');
         $categories = $this->categoryRepository->listCategories('name', 'asc');

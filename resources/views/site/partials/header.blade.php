@@ -29,7 +29,13 @@
                                 <div class="icon-wrap icon-xs bg2 round text-secondary"><i
                                         class="fa fa-shopping-cart"></i></div>
                                 <div class="text-wrap">
+                                    @if ($cartCount > 0)
                                     <small>{{ $cartCount }} items</small>
+                                    @elseif ($cartCountDB > 0)
+                                    <small>{{ $cartCountDB }} items</small>
+                                    @else
+                                    <small>0 items</small>
+                                    @endif
                                 </div>
                             </a>
                         </div>
