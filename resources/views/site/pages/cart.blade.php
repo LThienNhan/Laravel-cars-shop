@@ -175,7 +175,7 @@ Pay by MasterCard and Save 40%.
  <!-- điều kiện khi khách hàng  đăng nhập và sử dụng kho lưu trữ database số lượng trong kho database 
  phải lớn hơn 0-->
 @elseif(Auth::check() && Auth::user()->archives == 'database' && $cartCountDB > 0)
-<a href="{{ route('checkout.index') }}" class="btn btn-success btn-lg btn-block">Proceed To Checkout</a>
+<a href="{{ route('checkout.index.db', Auth::user()->id ) }}" class="btn btn-success btn-lg btn-block">Proceed To Checkout</a>
 @endif
 </aside>
 </div>

@@ -42,6 +42,7 @@ Route::get('/cart/cleardb', [CartController::class, 'clearCartDB'])->name('check
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/checkout', [CheckoutController::class, 'getCheckout'])->name('checkout.index');
+    Route::get('/checkout/{id}', [CheckoutController::class, 'getCheckoutDB'])->name('checkout.index.db');
     Route::post('/checkout/order', [CheckoutController::class, 'placeOrder'])->name('checkout.place.order');
     Route::get('checkout/payment/complete', [AccountController::class, 'complete'])->name('checkout.payment.complete');
     Route::get('account/orders', [AccountController::class, 'getOrders'])->name('account.orders');
