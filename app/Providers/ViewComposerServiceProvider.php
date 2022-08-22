@@ -5,6 +5,7 @@ namespace App\Providers;
 use Cart;
 use App\Models\Category;
 use App\Models\CartItem;
+use App\Models\Setting;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Auth;
@@ -30,8 +31,7 @@ class ViewComposerServiceProvider extends ServiceProvider
             if (Auth::check() && Auth::user()->archives == 'database') {
                 $id = Auth::user()->id;
                 $view->with('cartCountDB', CartItem::select()->where('user_id', $id)->get()->count());
-            }
-            else{
+            } else {
                 $view->with('cartCountDB', 0);
             }
         });
@@ -53,5 +53,9 @@ class ViewComposerServiceProvider extends ServiceProvider
                 $view->with('Carts', CartItem::select()->where('user_id', $id)->get());
             }
         });
+        // lấy ảnh logo từ trong bảng setting
+        View::composer('site.partials.header', function ($view) {   
+            $view->with('setting', Setting::select('value')->where('key','site_logo')->get());
+        });
     }
-}
+}   

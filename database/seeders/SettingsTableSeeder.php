@@ -33,7 +33,7 @@ class SettingsTableSeeder extends Seeder
         ],
         [
             'key'                       =>  'site_logo',
-            'value'                     =>  '',
+            'value'                     =>  '9flugGnsU3AAau3TGiZ8fCfnd.png',
         ],
         [
             'key'                       =>  'site_favicon',

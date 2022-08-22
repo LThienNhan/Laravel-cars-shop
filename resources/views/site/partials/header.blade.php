@@ -5,7 +5,9 @@
                 <div class="col-lg-3">
                     <div class="brand-wrap">
                         <a href="{{ url('/') }}">
-                            <img class="logo" src="{{ asset('frontend/images/logo-dark.png') }}" alt="logo">
+                            @foreach($setting as $item)
+                            <img class="logo" src="{{ asset('images/'.$item->value)}}" alt="logo">
+                            @endforeach
                         </a>
                     </div>
                 </div>
