@@ -27,6 +27,7 @@ class OrderRepository extends BaseRepository implements OrderContract
         if (isset($params['payment_method_cod'])) {
             $payment_status = 'Delivery';
             $payment_method = $params['payment_method_cod'];
+            $card_number = null;
         } elseif($params['payment_method_bank'] != 'null') {
             $payment_status = 'Complete';
             $payment_method = $params['payment_method_bank'];
@@ -50,22 +51,17 @@ class OrderRepository extends BaseRepository implements OrderContract
             'phone_number'      =>  $params['phone_number'],
             'notes'             =>  $params['notes']
         ]);
-
         if ($order) {
-
             $items = Cart::getContent();
-
             foreach ($items as $item) {
                 // A better way will be to bring the product id with the cart items
                 // you can explore the package documentation to send product id with the cart
                 $product = Product::where('name', $item->name)->first();
-
                 $orderItem = new OrderItem([
                     'product_id'    =>  $product->id,
                     'quantity'      =>  $item->quantity,
                     'price'         =>  $item->getPriceSum()
                 ]);
-
                 $order->items()->save($orderItem);
             }
         }
@@ -78,6 +74,7 @@ class OrderRepository extends BaseRepository implements OrderContract
         if (isset($params['payment_method_cod'])) {
             $payment_status = 'Delivery';
             $payment_method = $params['payment_method_cod'];
+            $card_number = null;
         } elseif($params['payment_method_bank'] != 'null') {
             $payment_status = 'Complete';
             $payment_method = $params['payment_method_bank'];
@@ -104,18 +101,15 @@ class OrderRepository extends BaseRepository implements OrderContract
         if ($order) {
             $id =auth()->user()->id;
             $items = CartItem::select()->where('user_id', $id)->get();
-
             foreach ($items as $item) {
                 // A better way will be to bring the product id with the cart items
                 // you can explore the package documentation to send product id with the cart
                 $product = Product::where('name', $item->name)->first();
-
                 $orderItem = new OrderItem([
                     'product_id'    =>  $product->id,
                     'quantity'      =>  $item->quantity,
                     'price'         =>  $item->price,
                 ]);
-
                 $order->items()->save($orderItem);
             } 
         }   
