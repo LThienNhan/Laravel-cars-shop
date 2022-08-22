@@ -40,9 +40,30 @@ class CheckoutController extends Controller
 
     public function placeOrder(Request $request)
     {
+      
+        
         if ($request->input('total') != 0) {
+            if ($request->input('payment_method_cod') == null && $request->input('payment_method_bank') == 'null') {
+                return redirect()->back()->with('error', 'Please choose a payment method');
+            } 
+            if ($request->input('payment_method_cod') != null && $request->input('payment_method_bank') != 'null') {
+                return redirect()->back()->with('error', 'Can not choose 2 payment methods on 1 bill');
+            }
             $orderDB = $this->orderRepository->storeOrderDetailsDB($request->all());
         } else {
+            if ($request->input('payment_method_cod') == null && $request->input('payment_method_bank') == 'null') {
+                return redirect()->back()->with('error', 'Please choose a payment method');
+            } 
+            if ($request->input('payment_method_cod') != null && $request->input('payment_method_bank') != 'null') {
+                return redirect()->back()->with('error', 'Can not choose 2 payment methods on 1 bill');
+            }
+            if ($request->input('payment_method_bank') != 'null') {
+                $this->validate($request, [
+                    'card_number'      =>  'required|min:9 |max: 14',
+                    'payment_method_bank'     =>  'required'
+                ]);
+            }
+        
             $order = $this->orderRepository->storeOrderDetails($request->all());
         }
         return redirect('/');

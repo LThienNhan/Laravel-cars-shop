@@ -24,14 +24,23 @@ class OrderRepository extends BaseRepository implements OrderContract
         foreach ($items as $item) {
            $quantity += $item->quantity;
         }
+        if (isset($params['payment_method_cod'])) {
+            $payment_status = 'Delivery';
+            $payment_method = $params['payment_method_cod'];
+        } elseif($params['payment_method_bank'] != 'null') {
+            $payment_status = 'Complete';
+            $payment_method = $params['payment_method_bank'];
+            $card_number = $params['card_number'];
+        } 
         $order = Order::create([
             'order_number'      =>  'ORD-'.strtoupper(uniqid()),
             'user_id'           => auth()->user()->id,
             'status'            =>  'pending',
             'grand_total'       =>  Cart::getSubTotal(),
             'item_count'        =>  $quantity,
-            'payment_status'    =>  0,
-            'payment_method'    =>  null,
+            'payment_status'    =>  $payment_status,
+            'payment_method'    =>  $payment_method,
+            'card_number'       =>  $card_number,
             'first_name'        =>  $params['first_name'],
             'last_name'         =>  $params['last_name'],
             'address'           =>  $params['address'],
@@ -60,20 +69,29 @@ class OrderRepository extends BaseRepository implements OrderContract
                 $order->items()->save($orderItem);
             }
         }
-
+        Cart::clear();
         return $order;
     }
 
     public function storeOrderDetailsDB($params)
     {
+        if (isset($params['payment_method_cod'])) {
+            $payment_status = 'Delivery';
+            $payment_method = $params['payment_method_cod'];
+        } elseif($params['payment_method_bank'] != 'null') {
+            $payment_status = 'Complete';
+            $payment_method = $params['payment_method_bank'];
+            $card_number = $params['card_number'];
+        } 
         $order = Order::create([
             'order_number'      =>  'ORD-'.strtoupper(uniqid()),
             'user_id'           => auth()->user()->id,
             'status'            =>  'pending',
             'grand_total'       =>  $params['total'],
             'item_count'        =>  $params['quantity'],
-            'payment_status'    =>  0,
-            'payment_method'    =>  null,
+            'payment_status'    =>  $payment_status,
+            'payment_method'    =>  $payment_method,
+            'card_number'       =>  $card_number,
             'first_name'        =>  $params['first_name'],
             'last_name'         =>  $params['last_name'],
             'address'           =>  $params['address'],
