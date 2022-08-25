@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\SchoolController;
+use App\Http\Controllers\Admin\StatusesController;
 
 Route::group(['prefix'  =>  'admin'], function () {
     Route::get('login', [LoginController::class, 'showLoginForm'])->name('admin.login');
@@ -72,6 +74,20 @@ Route::group(['prefix'  =>  'admin'], function () {
            Route::get('/',  [OrderController::class, 'index'])->name('admin.orders.index');
            Route::get('/{order}/show',[OrderController::class, 'show'])->name('admin.orders.show');
         });
+
+        Route::group(['prefix' => 'schools'], function () {
+            Route::get('/',  [SchoolController::class, 'index'])->name('admin.schools.index');
+         });
+
+         Route::group(['prefix' => 'statuses'], function () {
+            Route::get('/',  [StatusesController::class, 'index'])->name('admin.statuses.index');
+            Route::get('/create', [StatusesController::class, 'create'])->name('admin.statuses.create');
+            Route::post('/store', [StatusesController::class, 'store'])->name('admin.statuses.store');
+            Route::get('/edit/{id}', [StatusesController::class, 'edit'])->name('admin.statuses.edit');
+            Route::post('/update', [StatusesController::class, 'update'])->name('admin.statuses.update');
+            Route::get('/delete/{id}', [StatusesController::class, 'delete'])->name('admin.statuses.delete');
+            Route::post('images/upload', [StatusesController::class, 'upload'])->name('admin.statuses.upload');
+         });
     });
 });
   
