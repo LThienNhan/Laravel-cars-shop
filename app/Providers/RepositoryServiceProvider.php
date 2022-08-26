@@ -13,6 +13,10 @@ use App\Contracts\ProductContract;
 use App\Repositories\ProductRepository;
 use App\Contracts\OrderContract;
 use App\Repositories\OrderRepository;
+use App\Contracts\CartContract;
+use App\Repositories\CartRepository;
+use App\Contracts\SearchContract;
+use App\Repositories\SearchRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -22,6 +26,8 @@ class RepositoryServiceProvider extends ServiceProvider
         BrandContract::class            =>          BrandRepository::class,
         ProductContract::class          =>          ProductRepository::class,
         OrderContract::class            =>          OrderRepository::class,
+        SearchContract::class           =>          SearchRepository::class,
+        CartContract::class             =>          CartRepository::class,
     ];
 
     /**

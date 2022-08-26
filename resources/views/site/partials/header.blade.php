@@ -5,14 +5,17 @@
                 <div class="col-lg-3">
                     <div class="brand-wrap">
                         <a href="{{ url('/') }}">
-                            <img class="logo" src="{{ asset('frontend/images/logo-dark.png') }}" alt="logo">
+                            @foreach($setting as $item)
+                            <img class="logo" src="{{ asset('images/'.$item->value)}}" alt="logo">
+                            @endforeach
                         </a>
                     </div>
                 </div>
+                <!-- search -->
                 <div class="col-lg-6 col-sm-6">
-                    <form action="#" class="search-wrap">
+                    <form action="{{route('product.search')}}" class="search-wrap">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search">
+                            <input type="text" class="form-control" name="search" placeholder="Search by price or product name..." required>
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">
                                     <i class="fa fa-search"></i>
@@ -28,7 +31,13 @@
                                 <div class="icon-wrap icon-xs bg2 round text-secondary"><i
                                         class="fa fa-shopping-cart"></i></div>
                                 <div class="text-wrap">
+                                    @if ($cartCount > 0)
                                     <small>{{ $cartCount }} items</small>
+                                    @elseif ($cartCountDB > 0)
+                                    <small>{{ $cartCountDB }} items</small>
+                                    @else
+                                    <small>0 items</small>
+                                    @endif
                                 </div>
                             </a>
                         </div>

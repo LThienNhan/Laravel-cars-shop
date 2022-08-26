@@ -23,6 +23,7 @@ class UserSeeder extends Seeder
             'address'       =>  'Quận 1',
             'city'          =>  'Hồ Chí Minh',
             'country'       =>  'Việt Nam',
+            'archives'       =>  'database',
         ]);
     }
 }

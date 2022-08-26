@@ -24,8 +24,8 @@
     @if ($product->images->count() > 0)
         <div class="img-big-wrap">
             <div class="padding-y">
-                <a href="{{  asset('frontend/images/product/'.$product->images->first()->full) }}" data-fancybox="">
-                    <img style="width:100%;height:100%" src="{{  asset('frontend/images/product/'.$product->images->first()->full) }}" alt="">
+                <a href="{{  asset('images/'.$product->images->first()->full) }}" data-fancybox="">
+                    <img style="width:100%;height:100%" src="{{  asset('images/'.$product->images->first()->full) }}" alt="">
                 </a>
             </div>
         </div>
@@ -40,7 +40,7 @@
         <div class="img-small-wrap">
             @foreach($product->images as $image)
                 <div class="item-gallery">
-                    <img src="{{  asset('frontend/images/product/'.$product->images->first()->full) }}" alt="">
+                    <img src="{{  asset('images/'.$product->images->first()->full) }}" alt="">
                 </div>
             @endforeach
         </div>
@@ -69,7 +69,19 @@
         @endif
     </div>
     <hr>
-    <form action="{{ route('product.add.cart') }}" method="POST" role="form" id="addToCart">
+    <!-- điều kiện khi khách hàng đăng nhập tài khoản và có kho lưu trữ là database -->
+    <!-- @if (Auth::check()&&Auth::user()->archives == 'database')
+    <form action="{{route('product.add.cartDB')}}" method="POST" role="form" id="addToCart"> -->
+         <!-- điều kiện khi khách hàng đăng nhập tài khoản và có kho lưu trữ là session -->
+        <!-- @elseif (Auth::check()&&Auth::user()->archives == 'session')
+    <form action="{{route('product.add.cart')}}" method="POST" role="form" id="addToCart">
+        @else -->
+    <!-- điều kiện khi khách hàng không đăng nhập -->
+    <!-- <form action="{{route('product.add.cart')}}" method="POST" role="form" id="addToCart">
+        @endif -->
+
+        
+    <form action="{{route('product.add.cart')}}" method="POST" role="form" id="addToCart">
         @csrf
         <div class="row">
             <div class="col-sm-12">
@@ -79,7 +91,7 @@
                             <dt>{{ $attribute->name }}: </dt>
                             <dd>
                                 <select class="form-control form-control-sm option" style="width:180px;" name="{{ strtolower($attribute->name ) }}">
-                                    <option data-price="0" value="0"> Select a {{ $attribute->name }}</option>
+                                    <option data-price="0" value="1"> Select a {{ $attribute->name }}</option>
                                     @foreach($product->attributes as $attributeValue)
                                         @if ($attributeValue->attribute_id == $attribute->id)
                                             <option
@@ -102,15 +114,101 @@
                     <dt>Quantity: </dt>
                     <dd>
                         <input class="form-control" type="number" min="1" value="1" max="{{ $product->quantity }}" name="qty" style="width:70px;">
+                        <input type="hidden" name="name" value=" {{ $product->name }}">
                         <input type="hidden" name="productId" value="{{ $product->id }}">
                         <input type="hidden" name="price" id="finalPrice" value="{{ $product->sale_price != '' ? $product->sale_price : $product->price }}">
                     </dd>
                 </dl>
             </div>
         </div>
-        <hr>
+        <hr>     
+        <!-- khi sữ dụng lưu database -->
+        <!-- @if (Auth::check() && Auth::user()->archives == 'database')
         <button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Add To Cart</button>
-    </form>
+        @else
+        <a href="{{ route('login') }}" class="btn btn-danger">Login Now</a>
+        @endif -->
+         <!-- end -->
+          <!-- khi sữ dụng lưu session -->
+        <button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Add To Cart</button>
+    
+
+
+
+        <!-- điều kiện khi khách hàng đăng nhập tài khoản và chưa có kho lưu trữ -->
+     <!-- @if (Auth::check() && Auth::user()->archives == null)
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Choose repository
+    </button>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#rules">
+    Storage Rules
+    </button> -->
+        <!-- điều kiện khi khách hàng đăng nhập tài khoản và có kho lưu trữ rồi thì phần chọn và phần 
+        quy định sẽ mất chỉ có thêm sản phẩm-->
+        <!-- @elseif (Auth::check() && Auth::user()->archives != null)
+    <button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Add To Cart</button>
+        @else -->
+            <!-- điều kiện khi khách hàng chưa đăng nhập sẽ không được đăng ký kho lưu trữ -->
+    <!-- <button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Add To Cart</button>
+        @endif -->
+         
+<!-- Modal -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="exampleModalLabel">Please select your cart archive</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body">
+<center> -->
+<!-- điều kiện khi khách hàng đăng nhập tài khoản
+@if ( Auth::check())
+@php 
+if (Auth::check()&&Auth::user()->id) {
+    $id = Auth::user()->id;
+}
+@endphp
+<a onclick="return confirm(`Are you sure you choose Session?`)" href="{{ route('cart.seesion',  $id)}}" style="font-size:20px;margin-right:20px" class="btn btn-danger">Session</a>
+<a onclick="return confirm(`Are you sure you choose Database?`)" href="{{ route('cart.database',  $id)}}" style="font-size:20px" class="btn btn-primary">Database</a>
+@endif -->
+<!-- </center>
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="rules" tabindex="-1" role="dialog" aria-labelledby="rulesLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h1 class="modal-title" id="rulesLabel">STORAGE RULES</h1>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body" style="color:black">
+<h3 style="color:green">Session</h3>
+<label>When choosing the session cart archive, the user will add the product to the cart, the product 
+    will only exist in the cart for a short time and not fixed for a long time.</label>
+<h3  style="color:green">Database</h3>
+<label>When choosing Database shopping cart storage, users will add products to the cart, products 
+    will be stored in the database, products will remain in the cart even after logging out or for a 
+    long time.</label>
+<h3 style="color:orange">Advice</h3>
+<label>The repository will not be re-selected without the support of the site manager, please 
+consider before choosing.</label>
+
+<h3 style="color:red">Warning</h3>
+<label>when selecting the database repository the previous products in the cart you selected will be 
+deleted to store the new products in the database repository</labael>
+</div>
+</div>
+</div>
+</div>
+</form> -->
+
 </article>
 </aside>
 </div>
@@ -145,5 +243,5 @@ $('#finalPrice').val(finalPrice);
 $('#productPrice').html(finalPrice);
 });
 });
-</script>
+</>
 @endpush

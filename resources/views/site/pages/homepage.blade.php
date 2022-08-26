@@ -75,12 +75,12 @@ CERES CART is must fail.
 </div>
 <div class="col-md-6" style="text-align:center;">  
 <div data-aos="fade-left" data-aos-duration="1500">
-<img src="frontend/images/super-bike-motor-sport-logo-design-vector-197271890.jpg" style="margin-top:50px"width="80%" height="80%" alt="">
+<img src="images/products/super-bike-motor-sport-logo-design-vector-197271890.jpg" style="margin-top:50px"width="80%" height="80%" alt="">
 </div>
 </div>
 </div>
 
-<div class="row" style="background-image:url(frontend/images/anh-nen-ducati-mau-trang.jpg);background-color: transparent;margin-top:">
+<div class="row" style="background-image:url(images/products/anh-nen-ducati-mau-trang.jpg);background-color: transparent;margin-top:">
 
 <div class="col-md-12" style="margin-top:40px;margin-bottom:40px">
     <div data-aos="fade-up" data-aos-duration="1500">

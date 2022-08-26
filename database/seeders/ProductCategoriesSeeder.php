@@ -39,6 +39,34 @@ class ProductCategoriesSeeder extends Seeder
             'category_id'=> '6',
             'product_id'=> '6',
             ],
+            [
+            'category_id'=> '7',
+            'product_id'=> '7',
+            ],
+            [
+            'category_id'=> '8',
+            'product_id'=> '8',
+            ],
+            [
+            'category_id'=> '8',
+            'product_id'=> '9',
+            ],
+            [
+            'category_id'=> '9',
+            'product_id'=> '10',
+            ],
+            [
+            'category_id'=> '10',
+            'product_id'=> '11',
+            ],
+            [
+            'category_id'=> '10',
+            'product_id'=> '12',
+            ],
+            [
+            'category_id'=> '11',
+            'product_id'=> '13',
+            ],
         ]);
     }
 }

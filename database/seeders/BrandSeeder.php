@@ -15,7 +15,7 @@ class BrandSeeder extends Seeder
     public function run()
     {
         Brand::create([
-            'name'          =>  'R1',
+            'name'          =>  'yamaha',
             'slug'          =>  'yamaha',
             'logo'          =>  '',
         ]);
@@ -32,6 +32,31 @@ class BrandSeeder extends Seeder
         Brand::create([
             'name'          =>  'Lamborghini',
             'slug'          =>  'lamborghini',
+            'logo'          =>  '',
+        ]);
+        Brand::create([
+            'name'          =>  'BWM',
+            'slug'          =>  'bmw',
+            'logo'          =>  '',
+        ]);
+        Brand::create([
+            'name'          =>  'Honda',
+            'slug'          =>  'honda',
+            'logo'          =>  '',
+        ]);
+        Brand::create([
+            'name'          =>  'Suzuki',
+            'slug'          =>  'suzuki',
+            'logo'          =>  '',
+        ]);
+        Brand::create([
+            'name'          =>  'Hongqi',
+            'slug'          =>  'hongqi',
+            'logo'          =>  '',
+        ]);
+        Brand::create([
+            'name'          =>  'Mclaren',
+            'slug'          =>  'mclaren',
             'logo'          =>  '',
         ]);
 

@@ -89,5 +89,92 @@ class ProductSeeder extends Seeder
             'status'        => 1,
             'featured'      => 1
         ]);
+        Product::create([
+            'brand_id'      =>  '5',
+            'sku'           =>  'BMW1000RR',
+            'name'          =>  'BMW1000RR',
+            'slug'          =>  'bmw1000RR',
+            'description'   =>  'BMW1000RR is a great product from the manufacturer BMW with the best construction and great looks',
+            'quantity'      => 110,
+            'weight'        => 179,
+            'price'         => 40890,
+            'status'        => 1,
+            'featured'      => 1
+        ]);
+        Product::create([
+            'brand_id'      =>  '6',
+            'sku'           =>  'CBR600RR',
+            'name'          =>  'CBR600RR',
+            'slug'          =>  'cbr600rr',
+            'description'   =>  'CBR600RR is a great product from the manufacturer Honda with the best construction and great looks',
+            'quantity'      => 244,
+            'weight'        => 180,
+            'price'         => 35800,
+            'sale_price'    => 30000,
+            'status'        => 1,
+            'featured'      => 1
+        ]);
+        Product::create([
+            'brand_id'      =>  '6',
+            'sku'           =>  'CBR1000RR',
+            'name'          =>  'CBR1000RR',
+            'slug'          =>  'cbr1000rr',
+            'description'   =>  'CBR1000RR is a great product from the manufacturer Honda with the best construction and great looks',
+            'quantity'      => 104,
+            'weight'        => 180,
+            'price'         => 40100,
+            'sale_price'    => 39200,
+            'status'        => 1,
+            'featured'      => 1
+        ]);
+        Product::create([
+            'brand_id'      =>  '7',
+            'sku'           =>  'GSX1000RR',
+            'name'          =>  'GSX1000RR',
+            'slug'          =>  'gsx1000rr',
+            'description'   =>  'GSX1000RR is a great product from the manufacturer Suzuki with the best construction and great looks',
+            'quantity'      => 74,
+            'weight'        => 182,
+            'price'         => 32000,
+            'status'        => 1,
+            'featured'      => 1
+        ]);
+        Product::create([
+            'brand_id'      =>  '8',
+            'sku'           =>  'Hongqi S9 Phev',
+            'name'          =>  'Hongqi S9 Phev',
+            'slug'          =>  'hongqi-s9-phev',
+            'description'   =>  'Hongqi S9 Phev is a great product from the manufacturer Hongqi with the best construction and great looks',
+            'quantity'      => 51,
+            'weight'        => 1390,
+            'price'         => 920000,
+            'sale_price'    => 892000,
+            'status'        => 1,
+            'featured'      => 1
+        ]);
+        Product::create([
+            'brand_id'      =>  '8',
+            'sku'           =>  'Hongqi S9 Red',
+            'name'          =>  'Hongqi S9 Red',
+            'slug'          =>  'hongqi-s9-red',
+            'description'   =>  'Hongqi S9 Red is a great product from the manufacturer Hongqi with the best construction and great looks',
+            'quantity'      => 67,
+            'weight'        => 1390,
+            'price'         => 900000,
+            'status'        => 1,
+            'featured'      => 1
+        ]);
+        Product::create([
+            'brand_id'      =>  '9',
+            'sku'           =>  'Mclaren 720s',
+            'name'          =>  'Mclaren 720s',
+            'slug'          =>  'mclaren-720s',
+            'description'   =>  'Mclaren 720s is a great product from the manufacturer Mclaren with the best construction and great looks',
+            'quantity'      => 99,
+            'weight'        => 1300,
+            'price'         => 850000,
+            'status'        => 1,
+            'featured'      => 1
+        ]);
     }
 }

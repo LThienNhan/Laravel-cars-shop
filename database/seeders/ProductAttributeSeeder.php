@@ -44,5 +44,40 @@ class ProductAttributeSeeder extends Seeder
             'price'       =>  950000,
             'product_id'   =>  6,
         ]);
+        ProductAttribute::create([
+            'quantity'      =>  110,
+            'price'       =>  40890,
+            'product_id'   =>  7,
+        ]);
+        ProductAttribute::create([
+            'quantity'      =>  244,
+            'price'       =>  35800,
+            'product_id'   =>  8,
+        ]);
+        ProductAttribute::create([
+            'quantity'      =>  104,
+            'price'       =>  40100,
+            'product_id'   =>  9,
+        ]);
+        ProductAttribute::create([
+            'quantity'      =>  74,
+            'price'       =>  32000,
+            'product_id'   =>  10,
+        ]);
+        ProductAttribute::create([
+            'quantity'      =>  51,
+            'price'       =>  920000,
+            'product_id'   =>  11,
+        ]);
+        ProductAttribute::create([
+            'quantity'      =>  67,
+            'price'       =>  900000,
+            'product_id'   =>  12,
+        ]);
+        ProductAttribute::create([
+            'quantity'      =>  99,
+            'price'       =>  850000,
+            'product_id'   =>  13,
+        ]);
     }
 }

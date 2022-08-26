@@ -2,6 +2,12 @@
 <aside class="app-sidebar">
     <ul class="app-menu">
         <li>
+            <a class="app-menu__item {{ Route::currentRouteName() == 'admin.schools.index' ? 'active' : '' }}" href="{{ route('admin.schools.index') }}">
+                <i class="app-menu__icon fa fa-cogs"></i>
+                <span class="app-menu__label">Schools</span>
+            </a>
+        </li>
+        <li>
             <a class="app-menu__item {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
                 <i class="app-menu__icon fa fa-dashboard"></i>
                 <span class="app-menu__label">Dashboard</span>

@@ -9,6 +9,7 @@ use App\Contracts\ProductContract;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\StoreProductFormRequest;
 
+
 class ProductController extends BaseController
 {
     protected $brandRepository;
@@ -59,10 +60,11 @@ class ProductController extends BaseController
 
     public function edit($id)
     {
+        //có thể sử dụng Product trên funtison liên kết với $id và sử dụng nó
+        //$product = $id; thay vì $product = $this->productRepository->findProductById($id);
         $product = $this->productRepository->findProductById($id);
         $brands = $this->brandRepository->listBrands('name', 'asc');
         $categories = $this->categoryRepository->listCategories('name', 'asc');
-
         $this->setPageTitle('Products', 'Edit Product');
         return view('admin.products.edit', compact('categories', 'brands', 'product'));
     }
@@ -77,5 +79,15 @@ class ProductController extends BaseController
             return $this->responseRedirectBack('Error occurred while updating product.', 'error', true, true);
         }
         return $this->responseRedirect('admin.products.index', 'Product updated successfully' ,'success',false, false);
+    }
+
+    public function delete($id)
+    {
+        $product = $this->productRepository->deleteProduct($id);
+
+        if (!$product) {
+            return $this->responseRedirectBack('Error occurred while deleting product.', 'error', true, true);
+        }
+        return $this->responseRedirect('admin.products.index', 'Product deleted successfully' ,'success',false, false);
     }
 }

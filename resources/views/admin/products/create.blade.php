@@ -103,13 +103,16 @@
                                         <div class="form-group">
                                             <label class="control-label" for="special_price">Special Price</label>
                                             <input
-                                                class="form-control"
+                                            class="form-control @error('special_price') is-invalid @enderror"
                                                 type="text"
                                                 placeholder="Enter product special price"
                                                 id="special_price"
                                                 name="special_price"
                                                 value="{{ old('special_price') }}"
                                             />
+                                            <div class="invalid-feedback active">
+                                                <i class="fa fa-exclamation-circle fa-fw"></i> @error('special_price') <span>{{ $message }}</span> @enderror
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -155,6 +158,7 @@
                                                    type="checkbox"
                                                    id="status"
                                                    name="status"
+                                                    
                                                 />Status
                                         </label>
                                     </div>
